@@ -2,17 +2,13 @@ package com.oeynet.dev.mockserver.service;
 
 import com.oeynet.dev.mockserver.domain.models.TradeRet;
 import com.oeynet.dev.mockserver.interfaces.TradeLibrary;
-import com.sun.jna.Library;
-import com.sun.jna.Memory;
 import com.sun.jna.Native;
-import com.sun.jna.Pointer;
 
-import java.util.Arrays;
-
-@SuppressWarnings("Duplicates")
 public class TradeApi {
-
-    private static TradeLibrary tdxApi = Native.loadLibrary("static/trade", TradeLibrary.class);
+    /**
+     * //java工程必须添加引用 jna.jar, 在 https://github.com/twall/jna 下载 jna.jar
+     */
+    private static TradeLibrary tdxApi = Native.load("trade", TradeLibrary.class);
     private int clientId = -1;
 
 

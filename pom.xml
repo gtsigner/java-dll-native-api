@@ -69,10 +69,22 @@
     </dependencies>
 
     <build>
+        <!--资源配置 http://maven.apache.org/pom.html#Resources-->
         <resources>
             <resource>
                 <directory>lib</directory>
                 <targetPath>BOOT-INF/lib/</targetPath>
+            </resource>
+            <resource>
+                <directory>${basedir}/src/main/resources</directory>
+                <includes>
+                    <include>*.properties</include>
+                    <include>*.txt</include>
+                </includes>
+                <!--<targetPath>BOOT-INF/static</targetPath>-->
+            </resource>
+            <resource>
+                <directory>${basedir}/src/main/resources/static</directory>
             </resource>
         </resources>
 
