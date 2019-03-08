@@ -87,6 +87,7 @@ $res = HttpHelper::http($API_HOST . "order", [
     'Zqdm' => $trades[1],
     'Price' => $in['bs_price'],
     'Quantity' => $in['amount'],
+    'Token'=>'demo1'
 ], "POST");
 var_dump("下单：", $res);
 
@@ -96,5 +97,5 @@ var_dump("下单：", $res);
 /**
  * hth 表示要撤的目标委托的编号
  */
-$res = HttpHelper::http($API_HOST . "cancel", ['Gddm' => "", 'Hth' => "",], "POST");
+$res = HttpHelper::http($API_HOST . "cancel", ['Gddm' => "", 'Hth' => "",'Token'=>'demo1'], "POST");
 var_dump("取消：", $res);

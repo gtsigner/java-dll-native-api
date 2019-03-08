@@ -1,0 +1,48 @@
+{
+  "trades": [
+    {
+      "token": "demo1",
+      "ip": "113.105.125.27",
+      "port": "7708",
+      "version": "6.00",
+      "yyId": 1,
+      "accountNo": "20500000103",
+      "password": "265600",
+      "txPwd": "",
+      "clientId": -1
+    },
+    {
+      "token": "demo2",
+      "ip": "113.105.125.27",
+      "port": "7708",
+      "version": "6.00",
+      "yyId": 1,
+      "accountNo": "20500000103",
+      "password": "265600",
+      "txPwd": "",
+      "clientId": -1
+    },
+    {
+      "token": "demo3",
+      "ip": "113.105.125.27",
+      "port": "7708",
+      "version": "6.00",
+      "yyId": 1,
+      "accountNo": "20500000103",
+      "password": "265600",
+      "txPwd": "",
+      "clientId": -1
+    },
+    {
+      "token": "demo4",
+      "ip": "113.105.125.27",
+      "port": "7708",
+      "version": "6.00",
+      "yyId": 1,
+      "accountNo": "20500000103",
+      "password": "265600",
+      "txPwd": "",
+      "clientId": -1
+    }
+  ]
+}

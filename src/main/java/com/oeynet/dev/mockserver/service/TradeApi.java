@@ -1,5 +1,6 @@
 package com.oeynet.dev.mockserver.service;
 
+import com.oeynet.dev.mockserver.domain.models.Client;
 import com.oeynet.dev.mockserver.domain.models.TradeRet;
 import com.oeynet.dev.mockserver.interfaces.TradeLibrary;
 import com.sun.jna.Native;
@@ -11,15 +12,23 @@ public class TradeApi {
     private static TradeLibrary tdxApi = Native.load("trade", TradeLibrary.class);
     private int clientId = -1;
 
-
     private String errInfo = "";
     private String result = "";
     private static final String DLL_CHARSET = "GBK";
+    private Client config;
+
+    public Client getConfig() {
+        return config;
+    }
+
+    public void setConfig(Client config) {
+        this.config = config;
+    }
 
     /**
      * 客户端进行登录
      *
-     * @param ip
+     * @param ip        ip地址
      * @param port
      * @param version
      * @param yyId
@@ -28,7 +37,7 @@ public class TradeApi {
      * @param txPwd
      * @return TradeRet
      */
-    public TradeRet login(String ip, short port, String version, short yyId, String accountNo, String pwd, String txPwd) {
+    public synchronized TradeRet login(String ip, short port, String version, short yyId, String accountNo, String pwd, String txPwd) {
         TradeRet ret = new TradeRet();
         byte[] errInfo = new byte[256];
         this.clientId = tdxApi.Logon(ip, port, version, yyId, accountNo, pwd, txPwd, errInfo);
@@ -50,7 +59,7 @@ public class TradeApi {
      * @param quantity
      * @return
      */
-    public TradeRet sendOrder(int category, String priceType, String gddm, String zqdm, String price, String quantity) {
+    public synchronized TradeRet sendOrder(int category, String priceType, String gddm, String zqdm, String price, String quantity) {
         TradeRet ret = new TradeRet();
         byte[] errInfo = new byte[256];
         byte[] result = new byte[1024 * 1024];
@@ -70,7 +79,7 @@ public class TradeApi {
      * @param hth
      * @return
      */
-    public TradeRet cancelOrder(String gddm, String hth) {
+    public synchronized TradeRet cancelOrder(String gddm, String hth) {
         TradeRet ret = new TradeRet();
         byte[] errInfo = new byte[256];
         byte[] result = new byte[1024 * 1024];
@@ -86,15 +95,15 @@ public class TradeApi {
     /**
      * 注销登录
      */
-    public void logout() {
+    public synchronized void logout() {
         tdxApi.Logoff(this.clientId);
     }
 
-    public int getClientId() {
+    public synchronized int getClientId() {
         return clientId;
     }
 
-    public void setClientId(int clientId) {
+    public synchronized void setClientId(int clientId) {
         this.clientId = clientId;
     }
 
